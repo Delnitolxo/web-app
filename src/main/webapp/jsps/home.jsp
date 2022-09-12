@@ -11,9 +11,11 @@
 <body>
 <h1 align="center">Welcome to Acada Learning, Calgary, Canada Office.</h1>
 <h1 align="center">
-	Adeyi Ayodele
+	Adeyi Ayodele PSM1
+	
 	DevOps Engineer| Platform Engineer
-	Jenkins|Nexus|Maven|Github|Sonarqube|Tomcat|AWS|Azure
+	
+	Jenkins|Nexus|Maven|Github|Sonarqube|Tomcat|AWS|Azure|Agile
 	
 	Around 7 years of diversified experience in IT industry inclusive of 5 years of experience as a DevOps Engineer. Dedicated IT Professional with extensive experience in Linux applications and Bash Shell scripting,Automation,Confriguration
 	Cloud Computing,Troubleshooting,Networking,Provisioning,Monitoring and Maintenance of On-premises and cloud infrastructure using AWS Services,Azure and DevOps tools such as Nexus,GIT,Maven,Jenkins,CI/CD Pipeline, Sonarqube.
