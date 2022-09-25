@@ -1,0 +1,52 @@
+pipeline{
+agent any
+tools{
+maven "maven3.8.6"
+}
+stages{
+stage('GitClone'){
+steps{
+sh "echo Git Clone"
+git credentialsId: 'Github-Cred', url: 'https://github.com/Delnitolxo/web-app.git'
+}
+}
+stage('BuildArtifact'){
+steps{
+sh "echo build has started"
+sh "mvn package"
+}
+}
+stage('CodeQualityCheck'){
+steps{
+sh "echo start SonarQube Test"
+sh "mvn sonar:sonar"
+}
+}
+stage('BackupArtifacts'){
+steps{
+sh "echo Backup to Nexus"
+//sh "mvn deploy"
+}
+}
+stage('DeployToTomcatt'){
+steps{
+sh "echo deploy to server"
+deploy adapters: [tomcat9(credentialsId: 'delnitolxotomcat1', path: '', url: 'http://20.65.100.51:8080')], contextPath: null, war: 'target/*war'
+}
+}
+stage('ApprovalForProd'){
+steps{
+sh "echo approval required"
+timeout(time:1, unit:"DAYS"){
+input message:'Approval for Production'
+}
+}
+}
+stage('Production'){
+steps{
+sh "echo Deploy to Production"
+deploy adapters: [tomcat9(credentialsId: 'delnitolxotomcat1', path: '', url: 'http://20.65.100.51:8080')], contextPath: null, war: 'target/*war'
+}
+}
+}
+}
